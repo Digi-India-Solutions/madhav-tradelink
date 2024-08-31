@@ -1,0 +1,42 @@
+/* Styling the icon */
+.points ul{
+    list-style: none;
+    padding-left: 1rem;
+}
+.points ul li{
+    padding: 0.2rem 0rem;
+}
+.points ul li i {
+    color: #ff6600; 
+}
+.all-products .pro-grid{
+    margin: 1rem 0rem;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 0.3rem;
+}
+.all-products .pro-grid img{
+    height: 30rem;
+    transition: var(--transition-3);
+}
+.all-products .pro-grid img:hover{
+    opacity: 0.8;
+}
+@media only screen and (max-width: 800px){
+    .all-products .pro-grid{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .all-products .pro-grid img{
+        height: 25rem;
+    }
+}
+@media only screen and (max-width: 550px){
+    .all-products .pro-grid img{
+        height: auto;
+    }
+}
+@media only screen and (max-width: 380px){
+    .all-products .pro-grid{
+        grid-template-columns: repeat(1,1fr);
+    }
+}

@@ -1,0 +1,8 @@
+.breadHead{
+    background: var(--color-green-light);
+    margin-bottom: 2rem;
+}
+.breadcrumb a{
+    color: inherit;
+    text-decoration: none;
+}

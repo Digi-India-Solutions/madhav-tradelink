@@ -1,0 +1,20 @@
+.linehead{
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.linehead .line{
+    height: 3px;
+    width: 8%;
+    background: var(--color-green);
+    margin-right: 1rem;
+}
+.linehead h3{
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0rem;
+
+}
+
+
+

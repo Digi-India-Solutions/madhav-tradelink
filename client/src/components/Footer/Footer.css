@@ -1,0 +1,28 @@
+footer{
+    background: var(--color-green-light);
+}
+footer h5{
+    color: var(--color-brown);
+}
+footer .list-unstyled li{
+    margin-bottom: 0.5rem;
+}
+footer .list-unstyled a{
+    text-decoration: none;
+    color: var(--color-green);
+    transition: var(--transition-3);
+}
+footer .list-unstyled a:hover{
+    text-decoration: underline;
+    padding-left: 0.5rem;
+}
+
+footer .copyright{
+    border-top: 1px solid  var(--color-brown);
+    padding-top: 0.5rem;
+}
+
+footer .copyright a{
+    color: var(--color-brown);
+    text-transform: uppercase;
+}

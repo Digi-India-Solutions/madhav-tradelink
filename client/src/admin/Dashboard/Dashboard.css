@@ -1,0 +1,14 @@
+.rightSidebar {
+    margin-left: 260px;
+    margin-top: 4rem;
+    padding: 1rem;
+    
+}
+
+@media screen and (max-width: 768px){
+    .rightSidebar {
+        margin-left: 0px;
+        margin-top: 4rem;
+        padding: 1rem;
+    }
+}

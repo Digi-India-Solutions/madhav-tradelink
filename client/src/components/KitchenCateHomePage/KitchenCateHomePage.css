@@ -1,0 +1,44 @@
+.kitchenCate{
+    background: url('../Assets/bg1.jpg') fixed center center;
+}
+
+
+/* .kitchenCate .grid-4{
+    grid-template-columns: repeat(4,1fr);
+    display: grid;
+    gap: 0.5rem;
+} */
+.kitchenCate .single-kitch{
+    padding: 0.2rem;
+    text-decoration: none;
+    border-bottom:  1px dashed var(--color-green);
+    transition: var(--transition-3);
+}
+.kitchenCate .single-kitch:hover{
+    background: var(--color-green-light);
+}
+
+.kitchenCate .single-kitch .head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 1rem;
+    margin-bottom: 0.5rem;
+}
+.kitchenCate .single-kitch .head img{
+    height: 3rem;
+}
+.kitchenCate .single-kitch .head h4{
+    font-size: 1.2rem;
+    color: var(--color-green);
+    text-transform: uppercase;
+}
+.kitchenCate .single-kitch p{
+    color: var(--color-black);
+}
+
+
+
+
+
+

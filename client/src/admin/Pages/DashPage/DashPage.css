@@ -1,0 +1,30 @@
+
+.dashboard-content h1{
+    text-transform: uppercase;
+    color: var(--color-blue-light);
+}
+/* .dashboard-content .dash-grid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 0.8rem;
+    margin: 2rem 0rem;
+} */
+.dashboard-content .dash-grid .single-dash{
+    background: white;
+    padding: 1rem 0.3rem;
+    border-radius: 10px;
+    border: 1px dashed var(--color-blue-light);
+}
+.dashboard-content .dash-grid .single-dash .flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--color-blue-light);
+}
+.dashboard-content .dash-grid .single-dash .flex h4{
+    font-size: 1.3rem;
+}
+.dashboard-content .dash-grid .single-dash .flex i{
+    font-size: 1.8rem;
+}

@@ -1,0 +1,8 @@
+.imag-grid img{
+    height: 10rem;
+    object-fit: cover;
+}
+.wardrobe strong{
+    font-weight: 500;
+    color: var(--color-green);
+}

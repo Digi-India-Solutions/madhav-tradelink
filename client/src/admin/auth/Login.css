@@ -1,0 +1,38 @@
+/* Login.css */
+/* .login-container {
+    background: linear-gradient(to right, #4377a2, #00AAA9);
+    height: 100vh;
+} */
+
+.card {
+    border-radius: 10px;
+}
+
+.card-body {
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.btn-primary {
+    background-color: #4377a2;
+    border-color: #4377a2;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #00AAA9;
+    border-color: #00AAA9;
+}
+
+.alert {
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
