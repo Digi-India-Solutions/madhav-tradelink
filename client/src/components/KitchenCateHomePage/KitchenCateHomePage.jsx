@@ -9,7 +9,7 @@ const KitchenCateHomePage = () => {
     // const [kitchenCategory,setkitchenCategory] = useState([]);
     // const handleFetch = async()=>{
     //     try {
-    //         const res = await axios.get('http://localhost:6519/api/v1/get-all-subcategory')
+    //         const res = await axios.get('https://api.vigaz.in/api/v1/get-all-subcategory')
     //         console.log(res.data.data)
 
     //         const filterKitchenCate = res.data.data.filter((item)=> item.categoryName === "Modular Kitchen");
@@ -25,11 +25,11 @@ const KitchenCateHomePage = () => {
     const handleFetch = async () => {
         try {
             // Fetch data from the first endpoint
-            const res = await axios.get('http://localhost:6519/api/v1/get-all-subcategory');
+            const res = await axios.get('https://api.vigaz.in/api/v1/get-all-subcategory');
             // console.log(res.data.data);
 
             // Fetch data from the second endpoint
-            const innerResponse = await axios.get('http://localhost:6519/api/v1/get-all-inner-subcategory');
+            const innerResponse = await axios.get('https://api.vigaz.in/api/v1/get-all-inner-subcategory');
             // console.log(innerResponse.data.data);
 
             // Merge the data from both responses

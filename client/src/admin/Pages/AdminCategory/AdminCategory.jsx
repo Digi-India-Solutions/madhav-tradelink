@@ -11,7 +11,7 @@ const AdminCategory = () => {
 
     const handleFetch = async()=>{
         try {
-            const res = await axios.get('http://localhost:6519/api/v1/get-all-category');
+            const res = await axios.get('https://api.vigaz.in/api/v1/get-all-category');
             const reverseData = res.data.data.reverse();
             setCategory(reverseData)
             // console.log(categories)
@@ -35,7 +35,7 @@ const AdminCategory = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const res = await axios.delete(`http://localhost:6519/api/v1/delete-category/${id}`);
+                    const res = await axios.delete(`https://api.vigaz.in/api/v1/delete-category/${id}`);
                     console.log(res.data);
                     toast.success("Category Deleted Successfully");
                     handleFetch();

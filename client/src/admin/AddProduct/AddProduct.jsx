@@ -26,9 +26,9 @@ const AddProduct = () => {
     const fetchData = async () => {
       try {
         const [categoriesRes, subCategoriesRes, innerSubCategoriesRes] = await Promise.all([
-          axios.get('http://localhost:6519/api/v1/get-all-category'),
-          axios.get('http://localhost:6519/api/v1/get-all-subcategory'),
-          axios.get('http://localhost:6519/api/v1/get-all-inner-subcategory')
+          axios.get('https://api.vigaz.in/api/v1/get-all-category'),
+          axios.get('https://api.vigaz.in/api/v1/get-all-subcategory'),
+          axios.get('https://api.vigaz.in/api/v1/get-all-inner-subcategory')
         ]);
         setCategories(categoriesRes.data.data.map(item => item.categoryName));
         setSubCategories(subCategoriesRes.data.data.map(item => item.subCategoryName));
@@ -70,7 +70,7 @@ const AddProduct = () => {
     event.preventDefault();
     console.log(formData)
     try {
-      const response = await axios.post('http://localhost:6519/api/v1/create-product', formData);
+      const response = await axios.post('https://api.vigaz.in/api/v1/create-product', formData);
       console.log(response.data);
       toast.success('Product Added Successfully !!');
       window.location.href = '/all-products';

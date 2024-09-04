@@ -11,7 +11,7 @@ const AdminProductPage = () => {
 
     const handleFetch = async () => {
         try {
-            const res = await axios.get('http://localhost:6519/api/v1/get-all-product');
+            const res = await axios.get('https://api.vigaz.in/api/v1/get-all-product');
             const reverseData = res.data.data.reverse()
             setproduct(reverseData)
         } catch (error) {
@@ -34,7 +34,7 @@ const AdminProductPage = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const res = await axios.delete(`http://localhost:6519/api/v1/delete-product/${id}`);
+                    const res = await axios.delete(`https://api.vigaz.in/api/v1/delete-product/${id}`);
                     console.log(res.data);
                     toast.success("Product Deleted Successfully");
                     handleFetch();

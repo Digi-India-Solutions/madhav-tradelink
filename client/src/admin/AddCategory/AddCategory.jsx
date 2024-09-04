@@ -20,7 +20,7 @@ const AddCategory = () => {
   const handleSubmit = async(event)=>{
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:6519/api/v1/create-category',formData);
+      const response = await axios.post('https://api.vigaz.in/api/v1/create-category',formData);
       // console.log(response.data)
       toast.success("Category Added Successfully !!")
       window.location.href='/all-category'

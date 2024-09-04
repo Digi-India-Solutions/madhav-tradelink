@@ -9,7 +9,7 @@ const HeaderProduct = () => {
 
     const handleFetch = async () => {
         try {
-            const response = await axios.get('http://localhost:6519/api/v1/get-all-product');
+            const response = await axios.get('https://api.vigaz.in/api/v1/get-all-product');
             const semiData = response.data.data;
             // console.log(first)
             let rawData;

@@ -19,7 +19,7 @@ const EditCategory = () => {
       }
     const handleFetch = async()=>{
         try {
-            const res = await axios.get('http://localhost:6519/api/v1/get-all-category');
+            const res = await axios.get('https://api.vigaz.in/api/v1/get-all-category');
             // console.log(res.data.data)
             const product = res.data.data
             const fillterProduct = product.filter((item)=> item._id === id)
@@ -35,7 +35,7 @@ const EditCategory = () => {
     const handleSubmit = async(event)=>{
         event.preventDefault();
         try {
-            const submitResponse = await axios.post(`http://localhost:6519/api/v1/update-category/${id}`,formData);
+            const submitResponse = await axios.post(`https://api.vigaz.in/api/v1/update-category/${id}`,formData);
             // console.log(submitResponse)
             toast.success("Category Updated Successfully")
             window.location.href='/all-category'

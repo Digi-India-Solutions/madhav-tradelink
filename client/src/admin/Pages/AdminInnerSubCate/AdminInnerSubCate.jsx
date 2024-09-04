@@ -14,7 +14,7 @@ const AdminInnerSubCatePage = () => {
 
     const handleFetch = async ()=>{
         try {
-            const res = await axios.get("http://localhost:6519/api/v1/get-all-inner-subcategory");
+            const res = await axios.get("https://api.vigaz.in/api/v1/get-all-inner-subcategory");
             const reverseData = res.data.data.reverse();
             setSubCategory(reverseData);
             // console.log(subCategory)
@@ -35,7 +35,7 @@ const AdminInnerSubCatePage = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const res = await axios.delete(`http://localhost:6519/api/v1/delete-inner-subcategory/${id}`);
+                    const res = await axios.delete(`https://api.vigaz.in/api/v1/delete-inner-subcategory/${id}`);
                     console.log(res.data);
                     toast.success("SubCategory Deleted Successfully");
                     handleFetch();

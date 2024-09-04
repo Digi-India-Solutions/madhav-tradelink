@@ -33,7 +33,7 @@ const AddInnerSubCategory = () => {
     event.preventDefault();
     console.log(formData)
     try {
-      const response = await axios.post('http://localhost:6519/api/v1/create-inner-subcategory',formData);
+      const response = await axios.post('https://api.vigaz.in/api/v1/create-inner-subcategory',formData);
       // console.log(response.data)
       toast.success("Inner Sub Category Added Successfully !!")
       window.location.href='/all-inner-sub-category'
@@ -44,7 +44,7 @@ const AddInnerSubCategory = () => {
   }
   const handleCategory = async()=>{
     try {
-        const res = await axios.get('http://localhost:6519/api/v1/get-all-category');
+        const res = await axios.get('https://api.vigaz.in/api/v1/get-all-category');
         // console.log("i am cat",res.data)
         setCategory(res.data.data)
     } catch (error) {
@@ -53,7 +53,7 @@ const AddInnerSubCategory = () => {
   }
   const handleSubCategory = async()=>{
     try {
-        const res = await axios.get('http://localhost:6519/api/v1/get-all-subcategory');
+        const res = await axios.get('https://api.vigaz.in/api/v1/get-all-subcategory');
         // console.log("i am cat",res.data)
         setSubCategory(res.data.data)
     } catch (error) {

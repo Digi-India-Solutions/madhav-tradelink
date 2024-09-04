@@ -34,7 +34,7 @@ const EditProduct = () => {
 
   const handleFetch = async () => {
     try {
-      const res = await axios.get('http://localhost:6519/api/v1/get-all-product');
+      const res = await axios.get('https://api.vigaz.in/api/v1/get-all-product');
       const product = res.data.data;
       const fillterProduct = product.filter((item) => item._id === id);
       setFillter(fillterProduct);
@@ -61,7 +61,7 @@ const EditProduct = () => {
     event.preventDefault();
     try {
       // console.log(formData)
-      const submitResponse = await axios.post(`http://localhost:6519/api/v1/update-product/${id}`, formData);
+      const submitResponse = await axios.post(`https://api.vigaz.in/api/v1/update-product/${id}`, formData);
       toast.success("Product Updated Successfully")
       console.log(submitResponse)
       window.location.href = '/all-products'
@@ -134,9 +134,9 @@ const EditProduct = () => {
     const fetchData = async () => {
       try {
         const [categoriesRes, subCategoriesRes, innerSubCategoriesRes] = await Promise.all([
-          axios.get('http://localhost:6519/api/v1/get-all-category'),
-          axios.get('http://localhost:6519/api/v1/get-all-subcategory'),
-          axios.get('http://localhost:6519/api/v1/get-all-inner-subcategory')
+          axios.get('https://api.vigaz.in/api/v1/get-all-category'),
+          axios.get('https://api.vigaz.in/api/v1/get-all-subcategory'),
+          axios.get('https://api.vigaz.in/api/v1/get-all-inner-subcategory')
         ]);
         setCategories(categoriesRes.data.data.map(item => item.categoryName));
         setSubCategories(subCategoriesRes.data.data.map(item => item.subCategoryName));

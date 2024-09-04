@@ -14,7 +14,7 @@ const SubCategoryPage = () => {
 
     const handleFetch = async ()=>{
         try {
-            const res = await axios.get("http://localhost:6519/api/v1/get-all-subcategory");
+            const res = await axios.get("https://api.vigaz.in/api/v1/get-all-subcategory");
             setSubCategory(res.data.data);
             console.log(subCategory)
         } catch (error) {
@@ -34,7 +34,7 @@ const SubCategoryPage = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const res = await axios.delete(`http://localhost:6519/api/v1/delete-subcategory/${id}`);
+                    const res = await axios.delete(`https://api.vigaz.in/api/v1/delete-subcategory/${id}`);
                     console.log(res.data);
                     toast.success("SubCategory Deleted Successfully");
                     handleFetch();

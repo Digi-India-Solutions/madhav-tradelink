@@ -35,7 +35,7 @@ const Header = () => {
 
     const handleFetch = async () => {
         try {
-            const res = await axios.get('http://localhost:6519/api/v1/get-all-product');
+            const res = await axios.get('https://api.vigaz.in/api/v1/get-all-product');
             console.log(res.data.data);
             setAllCate(res.data.data);
 

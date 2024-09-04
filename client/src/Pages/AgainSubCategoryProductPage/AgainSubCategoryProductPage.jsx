@@ -8,7 +8,7 @@ const AgainSubCategoryProductPage = () => {
     const [product,setProduct] = useState([]);
     const handleFetch = async()=>{
         try {
-            const innerResponse = await axios.get('http://localhost:6519/api/v1/get-all-inner-subcategory');
+            const innerResponse = await axios.get('https://api.vigaz.in/api/v1/get-all-inner-subcategory');
             const cat = innerResponse.data.data;
             // console.log(subcategory)
             // console.log(cat)

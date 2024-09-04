@@ -22,7 +22,7 @@ const EditSubCategory = () => {
       }
     const handleFetch = async()=>{
         try {
-            const res = await axios.get('http://localhost:6519/api/v1/get-all-subcategory');
+            const res = await axios.get('https://api.vigaz.in/api/v1/get-all-subcategory');
             // console.log(res.data.data)
             const product = res.data.data
             const fillterProduct = product.filter((item)=> item._id === id)
@@ -41,7 +41,7 @@ const EditSubCategory = () => {
     const handleSubmit = async(event)=>{
         event.preventDefault();
         try {
-            const submitResponse = await axios.post(`http://localhost:6519/api/v1/update-subcategory/${id}`,formData);
+            const submitResponse = await axios.post(`https://api.vigaz.in/api/v1/update-subcategory/${id}`,formData);
             // console.log(submitResponse)
             toast.success("Sub Category Updated Successfully")
             window.location.href='/all-sub-category'
@@ -55,7 +55,7 @@ const EditSubCategory = () => {
     const [categories,setCategory] = useState([]);
     const handleCategory = async()=>{
         try {
-            const res = await axios.get('http://localhost:6519/api/v1/get-all-category');
+            const res = await axios.get('https://api.vigaz.in/api/v1/get-all-category');
             // console.log("i am cat",res.data)
             setCategory(res.data.data)
         } catch (error) {
