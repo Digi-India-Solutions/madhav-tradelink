@@ -57,57 +57,58 @@ const SubCategoryPage = () => {
     const modularKitchenCategory = categories.find(category => category.categoryName === "Modular Kitchen");
     const doorsCategory = categories.find(category => category.categoryName === "Doors");
 
+
+    // Group categories by categoryName
+    const groupedCategories = categories.reduce((acc, category) => {
+        if (category.categoryName !== "Modular Kitchen" && category.categoryName !== "Doors" && category.subCategoryName) {
+            if (!acc[category.categoryName]) {
+                acc[category.categoryName] = [];
+            }
+            acc[category.categoryName].push(category);
+        }
+        return acc;
+    }, {});
+
     return (
         <>
             {modularKitchenCategory && <KitchenCateHomePage key={modularKitchenCategory._id} />}
             {doorsCategory && <DoorCategory key={doorsCategory._id} />}
-            {categories.map(category => {
-                if (category.categoryName !== "Modular Kitchen" && category.categoryName !== "Doors" && category.subCategoryName) {
-                    return (
-                        <>
-                            <section className='doorCategory' key={category._id}>
-                                {console.log("Category : ", category)}
-                                <div className="container">
-                                    <LineHead title={category.categoryName} />
 
-                                    <div className="grid-4">
-                                        <div className="single-door">
-                                            <Link
-                                                to={category.AgainSubCategoryName ? `/AgainSub/${category.categoryName}/${category.subCategoryName}` : `/product/${category.categoryName}/${category.subCategoryName}`}
-                                                className="head"
-                                            >
-                                                {SubCategories.filter(subCat => subCat.categoryName === category.categoryName && subCat.subCategoryName === category.subCategoryName)
-                                                    .map((matchedSubCategory) => (
-                                                        <div key={matchedSubCategory._id}>
-                                                            <img src={matchedSubCategory.subCategoryImg} alt={matchedSubCategory.subCategoryName} />
-
-                                                        </div>
-                                                    ))
-                                                }
-                                                <h4>{category.subCategoryName}</h4>
-                                            </Link>
-                                            {SubCategories.filter(subCat => subCat.categoryName === category.categoryName && subCat.subCategoryName === category.subCategoryName)
-                                                .map((matchedSubCategory) => (
-                                                    <div key={matchedSubCategory._id}>
-                                                        <p>
-                                                            {matchedSubCategory.subCategoryDesc.split(' ').slice(0, 10).join(' ') + (matchedSubCategory.subCategoryDesc.split(' ').length > 10 ? '...' : '')}
-                                                        </p>
-
-                                                    </div>
-                                                ))
-                                            }
-                                            <p>{category.subCategoryDesc}</p>
-                                        </div>
-                                    </div>
+            {Object.keys(groupedCategories).map(categoryName => (
+                <section className='doorCategory' key={groupedCategories[categoryName][0]._id}>
+                    <div className="container">
+                        <LineHead title={categoryName} />
+                        <div className="grid-4">
+                            {groupedCategories[categoryName].map(category => (
+                                <div className="single-door" key={category._id}>
+                                    <Link
+                                        to={category.AgainSubCategoryName ? `/AgainSub/${category.categoryName}/${category.subCategoryName}` : `/product/${category.categoryName}/${category.subCategoryName}`}
+                                        className="head"
+                                    >
+                                        {SubCategories.filter(subCat => subCat.categoryName === category.categoryName && subCat.subCategoryName === category.subCategoryName)
+                                            .map(matchedSubCategory => (
+                                                <div key={matchedSubCategory._id}>
+                                                    <img src={matchedSubCategory.subCategoryImg} alt={matchedSubCategory.subCategoryName} />
+                                                </div>
+                                            ))
+                                        }
+                                        <h4>{category.subCategoryName}</h4>
+                                    </Link>
+                                    {SubCategories.filter(subCat => subCat.categoryName === category.categoryName && subCat.subCategoryName === category.subCategoryName)
+                                        .map(matchedSubCategory => (
+                                            <div key={matchedSubCategory._id}>
+                                                <p>
+                                                    {matchedSubCategory.subCategoryDesc.split(' ').slice(0, 10).join(' ') + (matchedSubCategory.subCategoryDesc.split(' ').length > 10 ? '...' : '')}
+                                                </p>
+                                            </div>
+                                        ))
+                                    }
                                 </div>
-                            </section>
-
-                        </>
-
-                    );
-                }
-                return null;
-            })}
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            ))}
         </>
     );
 };
