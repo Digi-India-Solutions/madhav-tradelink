@@ -21,7 +21,7 @@ const EditProduct = () => {
       heading: '',
       points: [],
     },
-    productImages: [],
+    productImage: [],
   })
 
   const handleChange = (event) => {
@@ -50,26 +50,15 @@ const EditProduct = () => {
           heading: productData.productPoints ? productData.productPoints.heading : '',
           points: productData.productPoints ? productData.productPoints.points : [],
         },
-        productImages: Array.isArray(productData.productImage) ? productData.productImage : [],
+        productImage: Array.isArray(productData.productImage) ? productData.productImage : [],
       });
     } catch (error) {
       console.error(error)
     }
   }
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      // console.log(formData)
-      const submitResponse = await axios.post(`https://api.vigaz.in/api/v1/update-product/${id}`, formData);
-      toast.success("Product Updated Successfully")
-      console.log(submitResponse)
-      window.location.href = '/all-products'
-    } catch (error) {
-      toast.error(error.response.data.msg)
-      console.log(error)
-    }
-  }
+  
+  
 
   const handlePointChange = (index, value) => {
     const updatedPoints = [...formData.productPoints.points];
@@ -151,20 +140,36 @@ const EditProduct = () => {
   }, []);
 
   const points = formData.productPoints.points;
+
   const handleImageChange = (index, event) => {
-    const newImages = [...formData.productImages];
+    const newImages = [...formData.productImage];
     newImages[index] = event.target.value;
     setFormData({
       ...formData,
-      productImages: newImages
+      productImage: newImages
     });
+    console.log("Updated productImage:", newImages); // Add logging
   };
+  
 
   const handleAddInput = () => {
     setFormData({
       ...formData,
-      productImages: [...formData.productImages, '']
+      productImage: [...formData.productImage, '']
     });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log("Form data before submission:", formData); // Add logging
+    try {
+      const submitResponse = await axios.post(`https://api.vigaz.in/api/v1/update-product/${id}`, formData);
+      toast.success("Product Updated Successfully");
+      // window.location.href = '/all-products';
+    } catch (error) {
+      toast.error(error.response.data.msg);
+      console.error(error);
+    }
   };
 
   return (
@@ -289,8 +294,8 @@ const EditProduct = () => {
             </div>
 
             <div className="col-md-12">
-              <label htmlFor="productImages" className="form-label">Product Images</label>
-              {formData.productImages.map((image, index) => (
+              <label htmlFor="productImage" className="form-label">Product Images</label>
+              {formData.productImage.map((image, index) => (
                 <div key={index} className="row mb-2">
                   <div className="col-md-10">
                     <input

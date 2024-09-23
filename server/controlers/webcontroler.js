@@ -478,9 +478,9 @@ exports.deleteProduct = async (req, res) => {
 }
 exports.updateProduct = async (req, res) => {
     try {
+        console.log(req.body);
         const productId = req.params.id;
         const updates = req.body;
-        // console.log("Incoming update request:", req.body);
 
         // Check if there are no fields to update
         if (Object.keys(updates).length === 0) {
@@ -494,6 +494,21 @@ exports.updateProduct = async (req, res) => {
         if (updates.productDescriptions) {
             updates.productDesc = updates.productDescriptions;
             delete updates.productDescriptions; // Remove the alias field to avoid conflicts
+        }
+
+        // Handle merging of productImages if provided
+        if (updates.productImages) {
+            const existingProduct = await productDetail.findById(productId);
+            if (!existingProduct) {
+                return res.status(404).json({
+                    success: false,
+                    msg: "Product not found."
+                });
+            }
+            
+            // Merge existing and new images, avoiding duplicates
+            updates.productImage = [...new Set([...existingProduct.productImage, ...updates.productImages])];
+            delete updates.productImages; // Remove the alias field to avoid conflicts
         }
 
         const options = { new: true }; // Return the modified document
@@ -521,5 +536,6 @@ exports.updateProduct = async (req, res) => {
         });
     }
 }
+
 
 
