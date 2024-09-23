@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 const SubCategoryPage = () => {
     const [categories, setCategory] = useState([]);
+    const [SubCategories, setSubCategory] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -22,6 +23,18 @@ const SubCategoryPage = () => {
             setIsLoading(false);
         }
     };
+    const handleFetchSubCategory = async () => {
+        try {
+            const res = await axios.get('https://api.vigaz.in/api/v1/get-all-subcategory');
+            // console.log(res.data.data);
+            setSubCategory(res.data.data);
+            setIsLoading(false);
+        } catch (error) {
+            console.error(error);
+            setError(error);
+            setIsLoading(false);
+        }
+    };
 
     useEffect(() => {
         window.scrollTo({
@@ -29,6 +42,7 @@ const SubCategoryPage = () => {
             behavior: "smooth"
         });
         handleFetch();
+        handleFetchSubCategory();
     }, []);
 
     if (isLoading) {
@@ -52,17 +66,36 @@ const SubCategoryPage = () => {
                     return (
                         <>
                             <section className='doorCategory' key={category._id}>
+                                {console.log("Category : ", category)}
                                 <div className="container">
                                     <LineHead title={category.categoryName} />
 
                                     <div className="grid-4">
                                         <div className="single-door">
-                                            <Link 
+                                            <Link
                                                 to={category.AgainSubCategoryName ? `/AgainSub/${category.categoryName}/${category.subCategoryName}` : `/product/${category.categoryName}/${category.subCategoryName}`}
                                                 className="head"
                                             >
+                                                {SubCategories.filter(subCat => subCat.categoryName === category.categoryName && subCat.subCategoryName === category.subCategoryName)
+                                                    .map((matchedSubCategory) => (
+                                                        <div key={matchedSubCategory._id}>
+                                                            <img src={matchedSubCategory.subCategoryImg} alt={matchedSubCategory.subCategoryName} />
+
+                                                        </div>
+                                                    ))
+                                                }
                                                 <h4>{category.subCategoryName}</h4>
                                             </Link>
+                                            {SubCategories.filter(subCat => subCat.categoryName === category.categoryName && subCat.subCategoryName === category.subCategoryName)
+                                                .map((matchedSubCategory) => (
+                                                    <div key={matchedSubCategory._id}>
+                                                        <p>
+                                                            {matchedSubCategory.subCategoryDesc.split(' ').slice(0, 10).join(' ') + (matchedSubCategory.subCategoryDesc.split(' ').length > 10 ? '...' : '')}
+                                                        </p>
+
+                                                    </div>
+                                                ))
+                                            }
                                             <p>{category.subCategoryDesc}</p>
                                         </div>
                                     </div>
